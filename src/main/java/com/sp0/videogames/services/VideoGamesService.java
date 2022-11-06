@@ -16,6 +16,6 @@ public class VideoGamesService {
     }
 
     public List<VideoGames> searchFeatured() {
-        return videoGamesRepository.findAll();
+        return videoGamesRepository.orderGamesByName();
     }
 }
