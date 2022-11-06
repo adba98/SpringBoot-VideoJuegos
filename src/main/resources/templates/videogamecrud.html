@@ -15,38 +15,40 @@
 <body>
 <nav class="navbar navbar-dark bg-info">
     <a class="navbar-brand" th:href="@{/}">
-        <img src="img/logo.png" width="30" height="30" alt="">
+        <img th:src="@{/img/logo.png}" width="30" height="30" alt="">
         Tienda Video Juegos
     </a>
     <form th:action="@{/buscar}" class="form-inline my-2 my-lg-0">
-        <input name="q" autofocus="autofocus" class="form-control mr-sm-2" type="search" th:placeholder="${param.q}"
-               aria-label="Search">
+        <input name="q" autofocus="autofocus" class="form-control mr-sm-2" type="search" th:placeholder="${param.q}" aria-label="Search">
         <button class="btn btn btn-primary my-2 my-sm-0" type="submit">Buscar</button>
     </form>
 </nav>
 
 <div class="container mt-4 vj-featured">
     <div class="row">
-        <div class="col-md-12 text-right mb-4">
-            <a class="btn btn-outline-success" th:href="@{/videojuego/crear}">Crear video juego</a>
-        </div>
-    </div>
-    <div class="row">
-        <div th:each="game : ${videogames}" class="col-md-3 mb-4">
-            <div class="card">
-                <img th:src="${game.imageUrl}"
-                     class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 th:text="${game.name}" class="card-title"></h5>
-                    <p><a class="badge badge-warning" th:text="${game.distributor.name}"
-                          th:href="@{/distribuidor(distributorId=${game.distributor.id})}"></a></p>
-                    <p th:if="${game.description} != 'Sin descripcion'" th:text="${game.description}"
-                       class="card-text"></p>
+        <div class="col-md-12">
+           <h1>Crear videojuego</h1>
+            <form>
+                <div class="form-group">
+                    <label for="name">Nombre</label>
+                    <input type="text" class="form-control" id="name" placeholder="Nombre de videojuego">
                 </div>
-                <div class="card-footer text-muted">
-                    <a href="#" class="btn btn-primary">Ver detalles</a>
+                <div class="form-group">
+                    <label for="description">Descripción</label>
+                    <textarea class="form-control" id="description" rows="3"></textarea>
                 </div>
-            </div>
+                <div class="form-group">
+                    <label for="imageUrl">URL de imagen</label>
+                    <input type="text" class="form-control" id="imageUrl" placeholder="URl de image">
+                </div>
+                <div class="form-group">
+                    <label for="distributor">Distribuidor</label>
+                    <select class="form-control" id="distributor">
+                        <option th:each="distributor : ${distributors}" th:text="${distributor.name}" th:value="${distributor.id}"></option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary">Guardar</button>
+            </form>
         </div>
     </div>
 </div>
