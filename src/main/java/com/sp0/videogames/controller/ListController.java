@@ -25,5 +25,13 @@ public class ListController {
         model.addAttribute("videogames", featured);
         return "list";
     }
+
+    @RequestMapping("/distribuidor")
+    public String listVideoGamesByDistributor(int distributorId, Model model) {
+        List<VideoGames> games = videoGamesService.searchDistributor(distributorId);
+        model.addAttribute("videogames", games);
+        return "list";
+    }
+
 }
 

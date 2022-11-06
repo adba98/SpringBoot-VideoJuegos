@@ -18,4 +18,8 @@ public class VideoGamesService {
     public List<VideoGames> searchFeatured() {
         return videoGamesRepository.orderGamesByName();
     }
+
+    public List<VideoGames> searchDistributor(int distributorId) {
+        return videoGamesRepository.searchByDistributor(distributorId);
+    }
 }

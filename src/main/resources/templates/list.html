@@ -14,7 +14,7 @@
 </head>
 <body>
 <nav class="navbar navbar-dark bg-info">
-    <a class="navbar-brand" href="#">
+    <a class="navbar-brand" th:href="@{/}">
         <img src="img/logo.png" width="30" height="30" alt="">
         Tienda Video Juegos
     </a>
@@ -28,7 +28,7 @@
                      class="card-img-top" alt="...">
                 <div class="card-body">
                     <h5 th:text="${game.name}" class="card-title"></h5>
-                    <p><span class="badge badge-warning" th:text="${game.distributor.name}"></span></p>
+                    <p><a class="badge badge-warning" th:text="${game.distributor.name}" th:href="@{/distribuidor(distributorId=${game.distributor.id})}"></a></p>
                     <p th:if="${game.description} == ''" th:text="${game.description}" class="card-text"></p>
                 </div>
                 <div class="card-footer text-muted">
