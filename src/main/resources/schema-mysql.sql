@@ -40,3 +40,38 @@ VALUES ('Bioshock Infinite',
        ('Firewatch',
         'Firewatch es un juego de misterio en primera persona para un jugador que se desarrolla en la selva de Wyoming',
         'https://www.mobygames.com/images/covers/l/323028-firewatch-playstation-4-front-cover.jpg');
+
+DROP TABLE IF EXISTS distributor;
+
+CREATE TABLE distributor
+(
+    id       int primary key auto_increment,
+    name     varchar(200) not null,
+    web_site varchar(500)
+);
+
+
+insert into distributor
+    (id, name, web_site)
+values (1, '2K', 'https://2k.com'),
+       (2, 'Focus Home Interactive', 'https://www.focus-home.com'),
+       (3, 'Thekla', null),
+       (4, 'Number One', null),
+       (5, '505 Games', 'https://505games.com'),
+       (6, 'Unknown Worlds Entertainment', 'https://unknownworlds.com'),
+       (7, 'Campo Santo', 'https://www.camposanto.com');
+
+alter table videogames
+    add column distributor_id int,
+add foreign key (distributor_id) references distributor(id);
+
+update videogames set distributor_id = 1 where id in (1, 5);
+update videogames set distributor_id = 2 where id in (2);
+update videogames set distributor_id = 3 where id in (3);
+update videogames set distributor_id = 4 where id in (4);
+update videogames set distributor_id = 5 where id in (6);
+update videogames set distributor_id = 6 where id in (7);
+update videogames set distributor_id = 7 where id in (8);
+
+alter table videogames
+    modify distributor_id int not null;

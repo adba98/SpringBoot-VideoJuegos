@@ -1,10 +1,7 @@
 package com.sp0.videogames.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+
+import javax.persistence.*;
 
 @Entity
 @Table(name = "videogames")
@@ -16,6 +13,9 @@ public class VideoGames {
     private String name;
     private String description;
     private String imageUrl;
+
+    @ManyToOne
+    private Distributor distributor;
 
     public void setId(Integer id) {
         this.id = id;
@@ -47,5 +47,13 @@ public class VideoGames {
 
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
+    }
+
+    public Distributor getDistributor() {
+        return distributor;
+    }
+
+    public void setDistributor(Distributor distributor) {
+        this.distributor = distributor;
     }
 }

@@ -13,7 +13,7 @@
     <title>Tienda VJ</title>
 </head>
 <body>
-<nav class="navbar navbar-dark bg-dark">
+<nav class="navbar navbar-dark bg-info">
     <a class="navbar-brand" href="#">
         <img src="img/logo.png" width="30" height="30" alt="">
         Tienda Video Juegos
@@ -28,6 +28,7 @@
                      class="card-img-top" alt="...">
                 <div class="card-body">
                     <h5 th:text="${game.name}" class="card-title"></h5>
+                    <p><span class="badge badge-warning" th:text="${game.distributor.name}"></span></p>
                     <p th:if="${game.description} == ''" th:text="${game.description}" class="card-text"></p>
                 </div>
                 <div class="card-footer text-muted">
