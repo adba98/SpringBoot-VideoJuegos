@@ -22,4 +22,8 @@ public class VideoGamesService {
     public List<VideoGames> searchDistributor(int distributorId) {
         return videoGamesRepository.searchByDistributor(distributorId);
     }
+
+    public List<VideoGames> search(String query) {
+        return videoGamesRepository.findByNameContaining(query);
+    }
 }

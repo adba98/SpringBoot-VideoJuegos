@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -29,6 +30,13 @@ public class ListController {
     @RequestMapping("/distribuidor")
     public String listVideoGamesByDistributor(int distributorId, Model model) {
         List<VideoGames> games = videoGamesService.searchDistributor(distributorId);
+        model.addAttribute("videogames", games);
+        return "list";
+    }
+
+    @RequestMapping("/buscar")
+    public String search(@RequestParam("q") String query, Model model) {
+        List<VideoGames> games = videoGamesService.search(query);
         model.addAttribute("videogames", games);
         return "list";
     }

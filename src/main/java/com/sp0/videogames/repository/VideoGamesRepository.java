@@ -13,4 +13,7 @@ public interface VideoGamesRepository extends JpaRepository<VideoGames, Integer>
 
     @Query("FROM VideoGames v WHERE v.distributor.id = ?1 ORDER BY v.name")
     List<VideoGames> searchByDistributor(int distributorId);
+
+    // Alternative: @Query("FROM VideoGames v WHERE v.name LIKE %?1% ORDER BY v.name")
+    List<VideoGames> findByNameContaining(String query);
 }
