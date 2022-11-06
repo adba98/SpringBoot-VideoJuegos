@@ -17,6 +17,17 @@ public class VideoGames {
     @ManyToOne
     private Distributor distributor;
 
+    @Override
+    public String toString() {
+        return "VideoGame {" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", imageUrl='" + imageUrl + '\'' +
+                ", distributorId=" + distributor.getId() +
+                '}';
+    }
+
     public void setId(Integer id) {
         this.id = id;
     }

@@ -28,22 +28,22 @@
     <div class="row">
         <div class="col-md-12">
            <h1>Crear videojuego</h1>
-            <form>
+            <form method="post" th:action="@{/videojuego/guardar}" th:object="${videogame}">
                 <div class="form-group">
                     <label for="name">Nombre</label>
-                    <input type="text" class="form-control" id="name" placeholder="Nombre de videojuego">
+                    <input type="text" class="form-control" id="name" placeholder="Nombre de videojuego" th:field="*{name}">
                 </div>
                 <div class="form-group">
                     <label for="description">Descripción</label>
-                    <textarea class="form-control" id="description" rows="3"></textarea>
+                    <textarea class="form-control" id="description" rows="3" th:field="*{description}"></textarea>
                 </div>
                 <div class="form-group">
                     <label for="imageUrl">URL de imagen</label>
-                    <input type="text" class="form-control" id="imageUrl" placeholder="URl de image">
+                    <input type="text" class="form-control" id="imageUrl" placeholder="URl de image" th:field="*{imageUrl}">
                 </div>
                 <div class="form-group">
                     <label for="distributor">Distribuidor</label>
-                    <select class="form-control" id="distributor">
+                    <select class="form-control" id="distributor" th:field="*{distributor}">
                         <option th:each="distributor : ${distributors}" th:text="${distributor.name}" th:value="${distributor.id}"></option>
                     </select>
                 </div>
