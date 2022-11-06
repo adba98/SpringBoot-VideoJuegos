@@ -26,4 +26,8 @@ public class VideoGamesService {
     public List<VideoGames> search(String query) {
         return videoGamesRepository.findByNameContaining(query);
     }
+
+    public VideoGames save(VideoGames videoGames) {
+        return videoGamesRepository.save(videoGames);
+    }
 }

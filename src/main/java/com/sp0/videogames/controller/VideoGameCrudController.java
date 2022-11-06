@@ -3,21 +3,20 @@ package com.sp0.videogames.controller;
 import com.sp0.videogames.domain.VideoGames;
 import com.sp0.videogames.services.DistributorService;
 import com.sp0.videogames.services.VideoGamesService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import java.util.List;
-
 @Controller
 public class VideoGameCrudController {
 
     private DistributorService distributorService;
+    private VideoGamesService videoGamesService;
 
-    public VideoGameCrudController(DistributorService distributorService) {
+    public VideoGameCrudController(DistributorService distributorService, VideoGamesService videoGamesService) {
         this.distributorService = distributorService;
+        this.videoGamesService = videoGamesService;
     }
 
     @RequestMapping("/videojuego/crear")
@@ -29,8 +28,8 @@ public class VideoGameCrudController {
 
 
     @PostMapping("/videojuego/guardar")
-    public String saveVideoGame(VideoGames videojuego) {
-        System.out.println(videojuego);
-        return  "redirect:/";
+    public String saveVideoGame(VideoGames videoGame) {
+        videoGamesService.save(videoGame);
+        return "redirect:/";
     }
 }
