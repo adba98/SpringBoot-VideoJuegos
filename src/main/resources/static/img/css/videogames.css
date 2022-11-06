@@ -1,0 +1,8 @@
+.vj-featured .card {
+    height: 100%;
+}
+
+.vj-featured .card img {
+    height: 200px;
+    object-fit: cover;
+}
